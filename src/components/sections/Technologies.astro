@@ -1,0 +1,54 @@
+---
+import Card from '../Card'
+import technologies from '../../utils/data/Technologies'
+import SectionLayout from '../Layouts/SectionLayout.astro'
+import TechnologyButton from '../TechnologyButton'
+---
+
+<SectionLayout sectionId="technologies" extraClass="text-shadow-none">
+	<div
+		class="grid grid-cols-1 auto-rows-auto lg:grid-cols-2 gap-5 lg:gap-3 w-10/12 2xl:w-5/6 h-full"
+	>
+		<Card userClass="lg:bg-gradient-to-br">
+			<div class="mb-4 2xl:mb-7">
+				<h3 class="text-2xl 2xl:text-4xl font-bold mb-1.5 2xl:mb-3">FRONTEND</h3>
+				<hr />
+			</div>
+			<div class="flex flex-wrap gap-3 justify-center">
+				{
+					technologies
+						.filter((t) => t.devSide === 'front')
+						.map((t) => <TechnologyButton technology={t} client:only="preact" />)
+				}
+			</div>
+		</Card>
+
+		<Card userClass="lg:bg-gradient-to-bl">
+			<div class="mb-4 2xl:mb-7">
+				<h3 class="text-2xl 2xl:text-4xl font-bold mb-1.5 2xl:mb-3">BACKEND</h3>
+				<hr />
+			</div>
+			<div class="flex flex-wrap gap-3 justify-center">
+				{
+					technologies
+						.filter((t) => t.devSide === 'back')
+						.map((t) => <TechnologyButton technology={t} client:only="preact" />)
+				}
+			</div>
+		</Card>
+
+		<Card userClass="lg:bg-gradient-to-t lg:col-span-2">
+			<div class="mb-4 2xl:mb-7">
+				<h3 class="text-2xl 2xl:text-4xl font-bold mb-1.5 2xl:mb-3">TOOLS</h3>
+				<hr />
+			</div>
+			<div class="flex flex-wrap gap-3 justify-center">
+				{
+					technologies
+						.filter((t) => t.devSide === 'tool')
+						.map((t) => <TechnologyButton technology={t} client:only="preact" />)
+				}
+			</div>
+		</Card>
+	</div>
+</SectionLayout>

@@ -1,16 +1,36 @@
 ---
-
+import '../styles/global.css'
+import Navbar from '../components/Navbar.astro'
+import AboutMe from '../components/sections/AboutMe.astro'
+import ContactMe from '../components/sections/ContactMe.astro'
+import Home from '../components/sections/Home.astro'
+import Projects from '../components/sections/Projects.astro'
+import Technologies from '../components/sections/Technologies.astro'
+import Experience from '../components/sections/Experience.astro'
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/pfpGithubDiegoQuipuzco.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Diego Quipuzco</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+			integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="relative">
+		<Navbar />
+		<Home />
+		<AboutMe />
+		<Experience />
+		<Projects />
+		<Technologies />
+		<ContactMe />
 	</body>
 </html>

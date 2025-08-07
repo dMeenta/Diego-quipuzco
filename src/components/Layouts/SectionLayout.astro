@@ -1,0 +1,14 @@
+---
+interface Props {
+	sectionId: string
+	extraClass?: string
+}
+const { sectionId, extraClass } = Astro.props
+---
+
+<section
+	id={sectionId}
+	class={`flex min-h-screen justify-center items-center text-shadow-lg text-shadow-black/30 ${extraClass}`}
+>
+	<slot />
+</section>

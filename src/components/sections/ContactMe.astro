@@ -1,0 +1,30 @@
+---
+import Card from '../Card'
+import SectionLayout from '../Layouts/SectionLayout.astro'
+import contactLinks from '../../utils/data/ContactLinks'
+import ContactButton from '../ContactButton'
+import ContactForm from '../ContactForm'
+---
+
+<SectionLayout sectionId="contact-me" extraClass="pt-18 pb-10 lg:py-4">
+	<div class="flex flex-col gap-2.5 w-6/7">
+		<Card>
+			<h3 class="text-2xl 2xl:text-4xl font-bold mb-4.5 2xl:mb-7">You can find me on:</h3>
+			<ul class="flex flex-col lg:flex-row items-center gap-2 lg:gap-3 justify-center">
+				{
+					contactLinks.map((cl) => (
+						<li class="w-full lg:w-fit">
+							<ContactButton socialLink={cl} showText={true} userClass="py-2 px-3 gap-2" />
+						</li>
+					))
+				}
+			</ul>
+		</Card>
+		<Card>
+			<h3 class="text-2xl 2xl:text-4xl font-bold mb-4.5 2xl:mb-7">
+				Or send me an email through the box below
+			</h3>
+			<ContactForm client:load />
+		</Card>
+	</div>
+</SectionLayout>

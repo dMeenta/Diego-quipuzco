@@ -1,0 +1,52 @@
+---
+import links from '../utils/data/NavBarLinks'
+---
+
+<header class="fixed z-50 w-full px-10 h-12 mt-3.5 flex justify-center gap-5 items-center">
+	<nav
+		id="navbar"
+		class="backdrop-blur-md overflow-hidden h-full px-5 w-11/12 lg:w-2/3 bg-white/5 hover:bg-black/50 rounded-2xl transition duration-500 xl:opacity-100"
+	>
+		<ul class="w-full h-full grid grid-flow-col auto-cols-auto place-items-center">
+			{
+				links.map((i) => {
+					return (
+						<li class="nav-bar-link">
+							<a href={`#${i.link}`} aria-label={i.text}>
+								<span>{i.text}</span>
+								<i class={`fa-solid fa-${i.icon}`} />
+							</a>
+						</li>
+					)
+				})
+			}
+		</ul>
+	</nav>
+</header>
+
+<script type="module">
+	window.addEventListener('DOMContentLoaded', () => {
+		const navbar = document.getElementById('navbar')
+		const LG_BREAKPOINT = 1024
+
+		if (window.innerWidth < LG_BREAKPOINT) return
+
+		let timeout
+
+		const setLowOpacity = () => {
+			navbar.classList.remove('xl:opacity-100')
+			navbar.classList.add('xl:opacity-50')
+		}
+		const resetOpacity = () => {
+			navbar.classList.add('xl:opacity-100')
+			navbar.classList.remove('xl:opacity-50')
+			clearTimeout(timeout)
+			timeout = setTimeout(setLowOpacity, 2000)
+		}
+
+		navbar.addEventListener('mouseenter', resetOpacity)
+		navbar.addEventListener('mousemove', resetOpacity)
+		navbar.addEventListener('mouseleave', resetOpacity)
+		resetOpacity()
+	})
+</script>

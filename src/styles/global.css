@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import 'tailwindcss';
+
+::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: oklch(50.8% 0.118 165.612);
+	border-radius: 30px;
+}
+
+::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0.8);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: oklch(59.6% 0.145 163.225);
+}
+
+html {
+	@apply scroll-smooth;
+}
+
+@theme {
+	--font-roboto: 'Roboto', sans-serif;
+}
+
+body {
+	@apply bg-zinc-900 text-white font-roboto;
+}
+
+button {
+	@apply not-disabled:hover:cursor-pointer;
+}
+
+.nav-bar-link {
+	@apply h-full content-center;
+	& a {
+		@apply text-shadow-lg text-shadow-black/20 hover:text-shadow-white/30 transition-all duration-500 flex justify-center items-center 2xl:text-2xl;
+		& span {
+			@apply hidden xl:block;
+		}
+		& i {
+			@apply xl:hidden;
+		}
+	}
+}
+
+small {
+	@apply 2xl:text-2xl;
+}
+
+@keyframes shine {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 100% 150%;
+	}
+}
+
+@utility animate-gradient-text {
+	& .project-name {
+		background: linear-gradient(
+			45deg,
+			oklch(85.5% 0.138 181.071),
+			oklch(84.5% 0.143 164.978),
+			oklch(70.2% 0.183 293.541),
+			oklch(84.5% 0.143 164.978),
+			oklch(70.2% 0.183 293.541),
+			oklch(85.5% 0.138 181.071)
+		);
+		text-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+		background-size: 200% auto;
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
+		animation: shine 2s ease-in-out infinite;
+	}
+}

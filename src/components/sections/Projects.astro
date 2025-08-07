@@ -1,0 +1,12 @@
+---
+import SectionLayout from '../Layouts/SectionLayout.astro'
+import ProjectsViewer from '../ProjectsViewer'
+---
+
+<SectionLayout sectionId="projects">
+	<div
+		class="group flex flex-row gap-1.5 w-10/12 2xl:w-5/6 transition-all duration-300 min-h-screen lg:h-screen pt-20 pb-8"
+	>
+		<ProjectsViewer client:only="preact" />
+	</div>
+</SectionLayout>

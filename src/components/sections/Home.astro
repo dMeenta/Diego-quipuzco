@@ -1,0 +1,43 @@
+---
+import ContactButton from '../ContactButton'
+import SectionLayout from '../Layouts/SectionLayout.astro'
+---
+
+<SectionLayout sectionId="home" extraClass="flex-col gap-4">
+	<div
+		role="button"
+		id="getToContact"
+		class="rounded-[100%] overflow-hidden cursor-pointer transition duration-300 shadow-xl shadow-transparent hover:shadow-emerald-600/30"
+	>
+		<img src="pp.webp" class="object-cover w-50 h-70" alt="Diego Quipuzco" />
+	</div>
+	<h1 class="flex flex-col text-center gap-3">
+		<span class="text-7xl font-extrabold">Diego Quipuzco</span>
+		<span class="text-3xl font-medium text-emerald-400">
+			Ingeniero de Sistemas - Software Developer Full Stack
+		</span>
+	</h1>
+	<div class="flex justify-center items-center h-10 gap-4">
+		<a
+			href="https://github.com/dMeenta"
+			target="_blank"
+			class="flex justify-center items-center w-10 text-shadow-black/20 text-shadow-lg bg-emerald-700 hover:bg-emerald-900 rounded-2xl h-full transition-all duration-300"
+		>
+			<i class="fa-brands fa-github"></i>
+		</a>
+		<a
+			href="https://www.linkedin.com/in/dquipuzco/"
+			target="_blank"
+			class="flex justify-center items-center w-10 text-shadow-black/20 text-shadow-lg bg-emerald-700 hover:bg-emerald-900 rounded-2xl h-full transition-all duration-300"
+		>
+			<i class="fa-brands fa-linkedin"></i>
+		</a>
+	</div>
+</SectionLayout>
+
+<script>
+	const getToContactButtonImage = document.getElementById('getToContact')
+	getToContactButtonImage?.addEventListener('click', () => {
+		window.location.href = '#contact-me'
+	})
+</script>
