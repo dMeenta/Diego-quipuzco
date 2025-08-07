@@ -1,4 +1,4 @@
-interface Link {
+export interface Link {
 	title: string
 	linkType: 'repository' | 'deploy'
 	url: string

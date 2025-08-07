@@ -32,7 +32,19 @@ const jobExperience: Job[] = [
 			'javascript',
 			'php'
 		],
-		link: 'https://www.tamimaquinarias.com/'
+		link: 'https://www.tamimaquinarias.com/',
+		repos: [
+			{
+				title: 'Frontend',
+				linkType: 'repository',
+				url: 'https://github.com/yuntasproducciones/Tami'
+			},
+			{
+				title: 'Backend',
+				linkType: 'repository',
+				url: 'https://github.com/yuntasproducciones/tami-back-teams'
+			}
+		]
 	},
 	{
 		id: 'job1',
@@ -59,7 +71,14 @@ const jobExperience: Job[] = [
 			'bootstrap',
 			'figma'
 		],
-		link: 'https://yapaykuy.com/'
+		link: 'https://yapaykuy.com/',
+		repos: [
+			{
+				title: '',
+				linkType: 'repository',
+				url: ''
+			}
+		]
 	}
 ]
 

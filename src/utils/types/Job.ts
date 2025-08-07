@@ -1,3 +1,5 @@
+import type { Link } from './Project'
+
 export default interface Job {
 	id: string
 	company: string
@@ -8,4 +10,5 @@ export default interface Job {
 	bulletPoints: string[]
 	technologiesUsed: string[]
 	link: string
+	repos: Link[]
 }

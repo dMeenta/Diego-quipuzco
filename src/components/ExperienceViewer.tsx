@@ -63,15 +63,33 @@ export default function ExperienceViewer() {
 							<div class="mb-4 2xl:mb-7 text-start">
 								<div class="px-2 mb-1.5 2xl:mb-3 flex justify-between">
 									<small>Used Technologies:</small>
-									<small>
-										<a
-											class="underline underline-offset-2 hover:underline-offset-3 hover:text-shadow-lg hover:text-shadow-white/30 transition duration-300"
-											target="_blank"
-											href={selectedJob.link}
-										>
-											Take a look of the project
-										</a>
-									</small>
+									<div class="flex gap-2">
+										{selectedJob.repos.map((r) => {
+											return (
+												<>
+													<small>
+														<a
+															class="underline underline-offset-2 hover:underline-offset-3 hover:text-shadow-lg hover:text-shadow-white/30 transition duration-300"
+															target="_blank"
+															href={r.url}
+														>
+															{r.title}
+														</a>
+													</small>
+													{selectedJob.repos.length > 1 && <small>-</small>}
+												</>
+											)
+										})}
+										<small>
+											<a
+												class="underline underline-offset-2 hover:underline-offset-3 hover:text-shadow-lg hover:text-shadow-white/30 transition duration-300"
+												target="_blank"
+												href={selectedJob.link}
+											>
+												Take a look of the project
+											</a>
+										</small>
+									</div>
 								</div>
 								<hr />
 							</div>
