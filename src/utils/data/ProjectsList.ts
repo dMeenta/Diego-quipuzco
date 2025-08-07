@@ -89,7 +89,7 @@ const projectsList: Project[] = [
 				url: 'https://github.com/dMeenta/GMNews'
 			}
 		],
-		video: ['https://www.youtube.com/embed/sIQY0A6v3CY']
+		video: ['/gmnews/gmnewsvideo.mp4']
 	},
 	{
 		id: 3,

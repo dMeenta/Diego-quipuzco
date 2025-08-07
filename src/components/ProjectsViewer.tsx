@@ -14,7 +14,7 @@ export default function ProjectsViewer() {
 					<button
 						key={p.id}
 						disabled={selectedProject === p.id}
-						class={`rounded-2xl not-disabled:hover:animate-gradient-text ${selectedProject === p.id ? 'shrink flex-10' : 'flex-1'} transition-all duration-300`}
+						class={`rounded-2xl not-disabled:hover:animate-gradient-text ${selectedProject === p.id ? 'shrink flex-2 lg:flex-10' : 'flex-1'} transition-all duration-300`}
 						onClick={() => setSelectedProject(p.id)}
 					>
 						<Card

@@ -24,6 +24,7 @@ export default function MediaViewer({ media }: Props) {
 			setIsLoading(true)
 		}
 	}
+
 	const goNext = () => {
 		if (media.length > 0) {
 			setCurrentIndex((prev) => (prev + 1) % media.length)
@@ -31,18 +32,23 @@ export default function MediaViewer({ media }: Props) {
 		}
 	}
 
-	const isVideo = (url: string) => {
-		return typeof url === 'string' && (url.includes('youtube.com') || url.includes('youtu.be'))
-	}
+	const isYouTubeVideo = (url: string) => url.includes('youtube.com') || url.includes('youtu.be')
+
+	const isLocalVideo = (url: string) => url.endsWith('.mp4') || url.endsWith('.webm')
+
+	const getMediaSrc = (url: string) =>
+		url.startsWith('http') ? url : `/Diego-quipuzco/projects/${url}`
 
 	if (media.length === 0) {
 		return (
-			// La clase flex-shrink-0 se agrega aquí también para mantener la consistencia
 			<Card userClass="aspect-video overflow-hidden flex flex-shrink-0 items-center justify-center">
 				No hay medios disponibles para este proyecto.
 			</Card>
 		)
 	}
+
+	const currentMedia = media[currentIndex]
+	const mediaSrc = getMediaSrc(currentMedia)
 
 	return (
 		<div class="flex-shrink-0 grid grid-cols-[auto_1fr_auto] grid-rows-[1fr_auto] items-center w-full">
@@ -61,17 +67,26 @@ export default function MediaViewer({ media }: Props) {
 						<div class="w-10 h-10 border-4 border-t-4 border-gray-200 border-t-emerald-700 rounded-full animate-spin"></div>
 					</div>
 				)}
-				{isVideo(media[currentIndex]) ? (
+
+				{isYouTubeVideo(currentMedia) ? (
 					<iframe
-						src={media[currentIndex] + '?rel=0'}
+						src={`${mediaSrc}?rel=0`}
 						class="w-full h-full"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 						allowFullScreen
 						onLoad={() => setIsLoading(false)}
 					></iframe>
+				) : isLocalVideo(currentMedia) ? (
+					<video
+						src={mediaSrc}
+						class="w-full h-full"
+						controls
+						muted
+						onLoadedData={() => setIsLoading(false)}
+					></video>
 				) : (
 					<img
-						src={`/projects/${media[currentIndex]}`}
+						src={mediaSrc}
 						class="w-full h-full"
 						alt="Project media"
 						onLoad={() => setIsLoading(false)}
@@ -87,6 +102,7 @@ export default function MediaViewer({ media }: Props) {
 					<i class="fa-solid fa-angle-right"></i>
 				</button>
 			)}
+
 			{media.length > 1 && (
 				<div class="flex justify-center mt-2 gap-1 col-span-3">
 					{media.map((_, i) => (
